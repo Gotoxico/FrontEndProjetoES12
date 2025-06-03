@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org http://www.thymeleaf.org/extras/thymeleaf-spring.xsd">
+<head>
+    <title>Report Page</title>
+    <!-- Link to your CSS files -->
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/ReportTable.css">
+    <link rel="stylesheet" href="/css/Footer.css">
+    <link rel="stylesheet" href="/css/global.css"> <!-- Assuming you have a global stylesheet -->
+
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-content">
+            <!-- Navigation will be rendered here, likely through a link or another template -->
+            <th:block th:replace="fragments/navigation :: navigation"></th:block>  <!-- Example using Thymeleaf fragments -->
+        </div>
+    </header>
+
+    <main>
+        <h1>Product Report</h1>
+
+        <div class="ReportTable">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome Produto</th>
+                        <th>Código Barras</th>
+                        <th>Nome Fornecedor</th>
+                        <th>Quantidade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="product : ${productData}">  <!-- Iterate through the product data -->
+                        <td><span th:text="${product.nomeProduto}"></span></td>
+                        <td><span th:text="${product.codigoBarras}"></span></td>
+                        <td><span th:text="${product.nomeFornecedor}"></span></td>
+                        <td><span th:text="${product.quantidade}"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="names">Desenvolvido por Kauan Loche e Rodrigo Goto</div>
+            <div><img src="/Property 1=light.svg" alt="Logo"/></div>
+        </div>
+    </footer>
+
+</body>
+</html>
